@@ -1,0 +1,1 @@
+This is my commercial website created using Django framework REST apis in the backend and consumed in react-front end app.
