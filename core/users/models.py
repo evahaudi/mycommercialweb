@@ -9,6 +9,16 @@ from django.dispatch import receiver
 class Users(AbstractUser):
     is_freecancer=models.BooleanField(default=False)
     is_client=models.BooleanField(default=False)
+    phone=models.CharField(max_length=50, null=True, blank=True)
+    skills=models.CharField(max_length=50, null=True, blank=True)
+    description=models.TextField(null=True, blank=True)
+    portfolio=models.CharField(null=True, blank=True)
+    username=models.CharField(unique=True,null=True, blank=True)
+    company_name=models.CharField(max_length=50, null=True, blank=True)
+
+    
+    
+    
     
     def __str__(self):
         return self.username
@@ -18,25 +28,34 @@ def create_auth_token(sender, instance=None, created=False, **kwargs):
     if created:
         Token.objects.create(user=instance)
     
-    
-
-    
+     
 class Freelancer(models.Model):
     user=models.OneToOneField(Users, related_name="freelancer", on_delete=models.CASCADE)
-    phone=models.CharField(max_length=15)
-    skills=models.CharField(max_length=50)
-    description=models.TextField
-    portfolio=models.CharField
+    phone=models.CharField(max_length=50, null=True, blank=True)
+    skills=models.CharField(max_length=50, null=True, blank=True)
+    description=models.TextField(null=True, blank=True)
+    portfolio=models.CharField(null=True, blank=True)
+    username=models.CharField(unique=True,null=True, blank=True)
+    company_name=models.CharField(max_length=50, null=True, blank=True)
+   
+    
+    
     
     def __str__(self):
-        return self.username
+        return self.user.username
     
 class Client(models.Model):
     user=models.OneToOneField(Users, related_name="employer", on_delete=models.CASCADE )
-    company_name=models.CharField(max_length=50)
-    description=models.TextField
+    phone=models.CharField(max_length=50, null=True, blank=True)
+    skills=models.CharField(max_length=50, null=True, blank=True)
+    description=models.TextField(null=True, blank=True)
+    portfolio=models.CharField(null=True, blank=True)
+    username=models.CharField(unique=True,null=True, blank=True)
+    company_name=models.CharField(max_length=50, null=True, blank=True)
+   
+   
     
     def __str__(self):
-        return self.company_name
+        return self.user.company_name
     
   
