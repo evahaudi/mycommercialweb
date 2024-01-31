@@ -10,7 +10,7 @@ class FreelanceSignupView(serializers.ModelSerializer):
     password2=serializers.CharField(style={'input_type':'password'}, write_only=True)
     class Meta:
         model=Users
-        fields = ['id','username','email','phone', 'company_name','skills', 'description', 'portfolio','password2','password']
+        fields = ['id','username','email','password2','password']
         extra_kwargs={
             'password':{'write_only':True}
         }

@@ -39,11 +39,9 @@ class Freelancer(models.Model):
     
 class Client(models.Model):
     user=models.OneToOneField(Users, related_name="employer", on_delete=models.CASCADE )
-
-   
-   
+  
     
     def __str__(self):
-        return self.user.company_name
+        return self.user.username
     
   
