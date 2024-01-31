@@ -6,24 +6,6 @@ class UserSerializer(serializers.ModelSerializer):
         model=Users
         fields = ['id', 'username', 'email', 'is_freecancer', 'is_client']
 
-class FreelancerSerializer(serializers.ModelSerializer):
-    password2=serializers.CharField(style={'input_type':'password'}, write_only=True)
-    class Meta:
-        model=Users
-        fields = ['id','username','email', 'phone', 'skills', 'description', 'portfolio','password2']
-        extra_kwargs={
-            'password':{'write_only':True}
-        }
-
-class ClientSerializer(serializers.ModelSerializer):
-    password2=serializers.CharField(style={'input_type':'password'}, write_only=True)
-    class Meta:
-        model=Users
-        fields = ['id','username','email', 'phone', 'skills', 'description', 'portfolio','password2']
-        extra_kwargs={
-            'password':{'write_only':True}
-        }
-        
 class FreelanceSignupView(serializers.ModelSerializer):
     password2=serializers.CharField(style={'input_type':'password'}, write_only=True)
     class Meta:
